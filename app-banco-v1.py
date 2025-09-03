@@ -18,16 +18,19 @@ def main():
             valor = float(input("Informe o valor a ser depositado: "))
             saldo, extrato = depositar(saldo, valor, extrato)
         elif opcao == "s":
-            print(f'o numero atual de saques é: {numero_saques}')
-            valor = float(input("Informe o valor a sacar: R$ "))
-            saldo, extrato, numero_saques = sacar(
-                saldo=saldo,
-                valor=valor,
-                extrato=extrato,
-                limite=limite,
-                numero_saques=numero_saques,
-                LIMITE_SAQUES=LIMITE_SAQUES,
-            )
+            
+            if numero_saques < 3:
+                valor = float(input("Informe o valor a sacar: R$ "))
+                saldo, extrato, numero_saques = sacar(
+                    saldo=saldo,
+                    valor=valor,
+                    extrato=extrato,
+                    limite=limite,
+                    numero_saques=numero_saques,
+                    LIMITE_SAQUES=LIMITE_SAQUES,
+                )
+            else:
+                print("O limite de 3 saques foi atingido.\n")
         elif opcao == "e":
             mostra_extrato(saldo, extrato=extrato)
         elif opcao == "q":
